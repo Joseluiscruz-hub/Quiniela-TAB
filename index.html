@@ -3582,6 +3582,7 @@ Al participar, aceptas estos términos y condiciones.`);
     
     // Apply configuration on page load
     window.addEventListener('DOMContentLoaded', function() {
+                    localStorage.removeItem('adminPasswordHash'); // Reset password to admin123
         applyConfiguration();
     });
 
