@@ -1103,9 +1103,399 @@
         .password-requirements.invalid {
             color: var(--danger);
         }
+
+        /* ==================== MEJORAS UX ==================== */
+        
+        /* Indicador de campos faltantes */
+        .match-card.missing {
+            border: 2px solid var(--danger);
+            animation: pulse-border 1.5s infinite;
+        }
+        
+        @keyframes pulse-border {
+            0%, 100% { border-color: var(--danger); }
+            50% { border-color: transparent; }
+        }
+        
+        .match-card.completed {
+            border: 2px solid var(--success);
+        }
+        
+        .match-card .completion-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+        
+        .match-card.completed .completion-badge {
+            opacity: 1;
+            transform: scale(1);
+            background: var(--success);
+            color: white;
+        }
+        
+        /* Progreso visual mejorado */
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress-dot.completed {
+            background: var(--success);
+            transform: scale(1.1);
+        }
+        
+        .progress-dot:hover {
+            transform: scale(1.3);
+        }
+        
+        .progress-dot::after {
+            content: attr(data-match);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .progress-dot:hover::after {
+            opacity: 1;
+        }
+        
+        /* Contador de caracteres */
+        .char-counter {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: right;
+            margin-top: 4px;
+        }
+        
+        .char-counter.warning {
+            color: var(--warning);
+        }
+        
+        .char-counter.error {
+            color: var(--danger);
+        }
+        
+        /* Validación de email */
+        .input-group input.valid {
+            border-color: var(--success);
+        }
+        
+        .input-group input.invalid {
+            border-color: var(--danger);
+        }
+        
+        .validation-message {
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .validation-message.success {
+            color: var(--success);
+        }
+        
+        .validation-message.error {
+            color: var(--danger);
+        }
+        
+        /* Resumen de predicciones en modal */
+        .predictions-summary {
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 15px 0;
+            text-align: left;
+        }
+        
+        .prediction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+        }
+        
+        .prediction-item .teams {
+            flex: 1;
+        }
+        
+        .prediction-item .result {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+        
+        .prediction-item .result.L {
+            background: var(--local-color);
+            color: white;
+        }
+        
+        .prediction-item .result.E {
+            background: var(--empate-color);
+            color: #1a1a2e;
+        }
+        
+        .prediction-item .result.V {
+            background: var(--visita-color);
+            color: white;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 16px;
+        }
+        
+        .faq-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            padding-top: 10px;
+        }
+        
+        /* Success Modal mejorado */
+        .success-modal {
+            background: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
+        }
+        
+        .success-modal .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        /* Historial de participaciones */
+        .history-section {
+            margin-top: 20px;
+        }
+        
+        .history-item {
+            background: var(--bg-secondary);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .history-item .date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .history-item .status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .history-item .status.pending {
+            background: var(--warning);
+            color: #1a1a2e;
+        }
+        
+        .history-item .status.completed {
+            background: var(--success);
+            color: white;
+        }
+        
+        /* Admin Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-card .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        
+        /* Prediction Stats */
+        .prediction-stats {
+            margin-top: 20px;
+        }
+        
+        .prediction-bar {
+            display: flex;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .prediction-bar .local {
+            background: var(--local-color);
+        }
+        
+        .prediction-bar .empate {
+            background: var(--empate-color);
+        }
+        
+        .prediction-bar .visita {
+            background: var(--visita-color);
+        }
+        
+        /* Contacto/Soporte */
+        .support-section {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .support-section a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .support-section a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Skip to content - Accesibilidad */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            z-index: 100000;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Focus visible para accesibilidad */
+        *:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+        
+        /* Rate limit warning */
+        .rate-limit-warning {
+            background: var(--warning);
+            color: #1a1a2e;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .rate-limit-warning.active {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
+
+<!-- Skip Link para Accesibilidad -->
+<a href="#quinielaForm" class="skip-link">Saltar al contenido principal</a>
+
+<!-- Rate Limit Warning -->
+<div class="rate-limit-warning" id="rateLimitWarning">
+    ⏳ Por favor espera antes de enviar otra quiniela
+</div>
 
 <!-- Toast Container -->
 <div class="toast-container" id="toastContainer"></div>
@@ -1291,16 +1681,33 @@
     </div>
 </div>
 
-<!-- Modal de confirmación -->
+<!-- Modal de confirmación con resumen -->
 <div class="modal-overlay" id="confirmModal">
-    <div class="modal">
+    <div class="modal" style="max-width: 500px;">
         <div class="modal-icon">🎯</div>
-        <h3>¿Confirmar quiniela?</h3>
-        <p>Estás a punto de enviar tus pronósticos. Una vez enviados no podrás modificarlos.</p>
-        <div class="modal-buttons">
-            <button class="modal-btn cancel" onclick="closeModal()">Cancelar</button>
-            <button class="modal-btn confirm" onclick="confirmSubmit()">Confirmar</button>
+        <h3>Confirma tu Quiniela</h3>
+        <p style="margin-bottom: 10px;">Revisa tus predicciones antes de enviar:</p>
+        <div class="predictions-summary" id="predictionsSummary"></div>
+        <div style="background: var(--bg-secondary); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+            <strong id="summaryName"></strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;" id="summaryEmail"></span>
         </div>
+        <div class="modal-buttons">
+            <button class="modal-btn cancel" onclick="closeModal()">✏️ Modificar</button>
+            <button class="modal-btn confirm" onclick="confirmSubmit()">✅ Confirmar Envío</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de éxito -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal success-modal" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+        <div class="modal-icon">🎉</div>
+        <h3 style="color: white;">¡Quiniela Enviada!</h3>
+        <p style="color: rgba(255,255,255,0.9);">Tu participación ha sido registrada exitosamente. ¡Buena suerte!</p>
+        <div id="participationCode" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; margin: 15px 0; font-family: monospace; font-size: 1.1rem; color: white;"></div>
+        <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem;">Guarda este código como comprobante</p>
+        <button class="modal-btn" style="width: 100%; background: white; color: var(--success);" onclick="closeSuccessModal()">Entendido</button>
     </div>
 </div>
 
@@ -1635,15 +2042,20 @@
             <h3>👤 Tus Datos</h3>
             <div class="input-group">
                 <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez García" required autocomplete="name">
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez García" required autocomplete="name" maxlength="50" oninput="updateCharCounter(this, 50)">
+                <div class="char-counter" id="nombreCounter">0/50</div>
+                <div class="validation-message" id="nombreValidation"></div>
             </div>
             <div class="input-group">
                 <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" placeholder="Ej: tucorreo@email.com" required autocomplete="email">
+                <input type="email" id="email" name="email" placeholder="Ej: tucorreo@email.com" required autocomplete="email" oninput="validateEmail(this)">
+                <div class="validation-message" id="emailValidation"></div>
             </div>
             <div class="input-group">
                 <label for="telefono">WhatsApp / Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 55 1234 5678" required autocomplete="tel">
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 55 1234 5678" required autocomplete="tel" maxlength="15" oninput="updateCharCounter(this, 15); formatPhone(this)">
+                <div class="char-counter" id="telefonoCounter">0/15</div>
+                <div class="validation-message" id="telefonoValidation"></div>
             </div>
             <div class="terms-group">
                 <input type="checkbox" id="terms" required>
@@ -1656,6 +2068,58 @@
         </button>
     </form>
 </main>
+
+<!-- Sección de Preguntas Frecuentes -->
+<div class="container">
+    <div class="faq-section">
+        <h3>❓ Preguntas Frecuentes</h3>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">¿Cómo participo en la quiniela?</div>
+            <div class="faq-answer">
+                Selecciona tu predicción (Local, Empate o Visitante) para cada partido, completa tus datos personales y haz clic en "Enviar mi Quiniela". Recibirás una confirmación cuando tu participación sea registrada.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">¿Cómo se determinan los ganadores?</div>
+            <div class="faq-answer">
+                El ganador es quien acierte más predicciones correctas. En caso de empate en aciertos, el premio se divide entre los ganadores. Los resultados se publican al finalizar todos los partidos de la jornada.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">¿Puedo modificar mi quiniela después de enviarla?</div>
+            <div class="faq-answer">
+                Puedes enviar una nueva quiniela antes de que cierre el plazo. Solo se considerará tu última participación registrada con el mismo correo electrónico.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">¿Cuándo recibiré mi premio si gano?</div>
+            <div class="faq-answer">
+                Los premios se entregan dentro de los 5 días hábiles posteriores al cierre de la jornada. Nos comunicaremos contigo al correo electrónico o WhatsApp que proporcionaste.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">¿Hay costo por participar?</div>
+            <div class="faq-answer">
+                La participación es completamente gratuita. Solo debes ser mayor de 18 años y completar todos los campos requeridos.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sección de Soporte -->
+    <div class="support-section">
+        <h4>📞 ¿Necesitas ayuda?</h4>
+        <p style="color: var(--text-secondary); margin-top: 10px;">
+            Si tienes dudas o problemas, contáctanos:<br>
+            <a href="mailto:soporte@quiniela.mx">soporte@quiniela.mx</a> | 
+            <a href="https://wa.me/5215512345678" target="_blank">WhatsApp</a>
+        </p>
+    </div>
+</div>
 
 <footer class="footer">
     <p>© 2025 Quiniela Liga MX • Todos los derechos reservados</p>
@@ -1813,36 +2277,30 @@
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Verificar que todos los partidos estén seleccionados
-        let allSelected = true;
-        let firstMissing = null;
-        
-        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
-            if (!form.querySelector(`input[name="p${i}"]:checked`)) {
-                allSelected = false;
-                if (!firstMissing) {
-                    firstMissing = document.querySelector(`[data-match="${i}"]`);
-                }
-            }
+        // Rate limiting
+        if (!checkRateLimit()) {
+            return;
         }
         
-        if (!allSelected) {
-            showToast('Debes seleccionar un pronóstico para todos los partidos', 'warning');
+        // Validación completa
+        const validation = validateAllFields();
+        
+        if (!validation.isValid) {
+            // Mostrar errores
+            validation.errors.forEach((error, index) => {
+                setTimeout(() => showToast(error, 'warning'), index * 500);
+            });
+            
+            // Resaltar campos faltantes
+            const firstMissing = highlightMissingMatches();
             if (firstMissing) {
                 firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                firstMissing.classList.add('shake');
-                setTimeout(() => firstMissing.classList.remove('shake'), 500);
             }
             return;
         }
         
-        // Verificar términos
-        if (!form.terms.checked) {
-            showToast('Debes aceptar los términos y condiciones', 'warning');
-            return;
-        }
-        
-        // Mostrar modal de confirmación
+        // Generar resumen y mostrar modal
+        generatePredictionsSummary();
         openModal();
     });
 
@@ -1876,7 +2334,9 @@
             body: JSON.stringify(data)
         })
         .then(() => {
-            showToast('¡Quiniela registrada con éxito! Buena suerte 🍀', 'success');
+            // Mostrar modal de éxito
+            showSuccessModal();
+            lastSubmitTime = Date.now();
             
             // Limpiar localStorage
             localStorage.removeItem('quinielaData');
@@ -1884,9 +2344,16 @@
             // Resetear formulario
             form.reset();
             document.querySelectorAll('.match-card').forEach(card => {
-                card.classList.remove('selected-L', 'selected-E', 'selected-V');
+                card.classList.remove('selected-L', 'selected-E', 'selected-V', 'completed', 'missing');
             });
             updateProgress();
+            updateProgressDots();
+            
+            // Resetear contadores
+            document.getElementById('nombreCounter').textContent = '0/50';
+            document.getElementById('telefonoCounter').textContent = '0/15';
+            document.querySelectorAll('.validation-message').forEach(el => el.textContent = '');
+            document.querySelectorAll('.input-group input').forEach(el => el.classList.remove('valid', 'invalid'));
             
             submitBtn.innerHTML = '✅ ¡Enviado con éxito!';
             
@@ -2535,6 +3002,346 @@ Al participar, aceptas estos términos y condiciones.`);
         card.style.transition = `all 0.5s ease ${index * 0.05}s`;
         observer.observe(card);
     });
+
+    // ==================== MEJORAS UX ====================
+    
+    // Inicializar dots de progreso
+    function initProgressDots() {
+        const container = document.getElementById('progressDots');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot';
+            dot.setAttribute('data-match', i);
+            dot.onclick = () => scrollToMatch(i);
+            container.appendChild(dot);
+        }
+        updateProgressDots();
+    }
+    
+    // Actualizar dots de progreso
+    function updateProgressDots() {
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
+            const dot = document.querySelector(`.progress-dot[data-match="${i}"]`);
+            const card = document.querySelector(`[data-match="${i}"]`);
+            const isSelected = form.querySelector(`input[name="p${i}"]:checked`);
+            
+            if (dot) {
+                dot.classList.toggle('completed', !!isSelected);
+            }
+            if (card) {
+                card.classList.remove('completed', 'missing');
+                if (isSelected) {
+                    card.classList.add('completed');
+                }
+            }
+        }
+    }
+    
+    // Scroll a un partido específico
+    function scrollToMatch(matchNum) {
+        const card = document.querySelector(`[data-match="${matchNum}"]`);
+        if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            card.classList.add('shake');
+            setTimeout(() => card.classList.remove('shake'), 500);
+        }
+    }
+    
+    // Marcar partidos faltantes
+    function highlightMissingMatches() {
+        let firstMissing = null;
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
+            const card = document.querySelector(`[data-match="${i}"]`);
+            const isSelected = form.querySelector(`input[name="p${i}"]:checked`);
+            
+            if (card) {
+                card.classList.remove('missing');
+                if (!isSelected) {
+                    card.classList.add('missing');
+                    if (!firstMissing) firstMissing = card;
+                }
+            }
+        }
+        return firstMissing;
+    }
+    
+    // Contador de caracteres
+    function updateCharCounter(input, maxLength) {
+        const counter = document.getElementById(input.id + 'Counter');
+        if (counter) {
+            const length = input.value.length;
+            counter.textContent = length + '/' + maxLength;
+            counter.className = 'char-counter';
+            if (length >= maxLength * 0.9) {
+                counter.classList.add('warning');
+            }
+            if (length >= maxLength) {
+                counter.classList.add('error');
+            }
+        }
+        
+        // Validar nombre
+        if (input.id === 'nombre') {
+            validateName(input);
+        }
+    }
+    
+    // Validar nombre
+    function validateName(input) {
+        const validation = document.getElementById('nombreValidation');
+        const value = input.value.trim();
+        
+        if (value.length === 0) {
+            validation.textContent = '';
+            validation.className = 'validation-message';
+            input.classList.remove('valid', 'invalid');
+        } else if (value.length < 3) {
+            validation.textContent = '❌ El nombre es muy corto';
+            validation.className = 'validation-message error';
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+        } else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(value)) {
+            validation.textContent = '❌ Solo letras y espacios';
+            validation.className = 'validation-message error';
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+        } else {
+            validation.textContent = '✓ Nombre válido';
+            validation.className = 'validation-message success';
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+        }
+    }
+    
+    // Validar email
+    function validateEmail(input) {
+        const validation = document.getElementById('emailValidation');
+        const value = input.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (value.length === 0) {
+            validation.textContent = '';
+            validation.className = 'validation-message';
+            input.classList.remove('valid', 'invalid');
+        } else if (!emailRegex.test(value)) {
+            validation.textContent = '❌ Correo electrónico inválido';
+            validation.className = 'validation-message error';
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+        } else {
+            validation.textContent = '✓ Correo válido';
+            validation.className = 'validation-message success';
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+        }
+        
+        return emailRegex.test(value);
+    }
+    
+    // Formatear teléfono
+    function formatPhone(input) {
+        let value = input.value.replace(/\D/g, '');
+        if (value.length > 10) value = value.substring(0, 10);
+        
+        // Formato: XX XXXX XXXX
+        if (value.length > 6) {
+            value = value.substring(0, 2) + ' ' + value.substring(2, 6) + ' ' + value.substring(6);
+        } else if (value.length > 2) {
+            value = value.substring(0, 2) + ' ' + value.substring(2);
+        }
+        
+        input.value = value;
+        
+        const validation = document.getElementById('telefonoValidation');
+        const numericValue = input.value.replace(/\D/g, '');
+        
+        if (numericValue.length === 0) {
+            validation.textContent = '';
+            validation.className = 'validation-message';
+            input.classList.remove('valid', 'invalid');
+        } else if (numericValue.length < 10) {
+            validation.textContent = '❌ El teléfono debe tener 10 dígitos';
+            validation.className = 'validation-message error';
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+        } else {
+            validation.textContent = '✓ Teléfono válido';
+            validation.className = 'validation-message success';
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+        }
+    }
+    
+    // Toggle FAQ
+    function toggleFaq(element) {
+        // Cerrar otros FAQs
+        document.querySelectorAll('.faq-item.open').forEach(item => {
+            if (item !== element) item.classList.remove('open');
+        });
+        element.classList.toggle('open');
+    }
+    
+    // Generar resumen de predicciones
+    function generatePredictionsSummary() {
+        const config = getAdminConfig();
+        const summary = document.getElementById('predictionsSummary');
+        let html = '';
+        
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
+            const selected = form.querySelector(`input[name="p${i}"]:checked`);
+            if (selected) {
+                const match = config.matches[i - 1] || { home: 'Equipo ' + i, away: 'Equipo ' + i };
+                const resultText = selected.value === 'L' ? 'Local' : selected.value === 'E' ? 'Empate' : 'Visita';
+                
+                html += '<div class="prediction-item">';
+                html += '<span class="teams">' + match.home + ' vs ' + match.away + '</span>';
+                html += '<span class="result ' + selected.value + '">' + resultText + '</span>';
+                html += '</div>';
+            }
+        }
+        
+        summary.innerHTML = html;
+        
+        // Actualizar nombre y email en el resumen
+        document.getElementById('summaryName').textContent = form.nombre.value;
+        document.getElementById('summaryEmail').textContent = form.email.value;
+    }
+    
+    // Generar código de participación
+    function generateParticipationCode() {
+        const timestamp = Date.now().toString(36).toUpperCase();
+        const random = Math.random().toString(36).substring(2, 6).toUpperCase();
+        return 'QNL-' + timestamp.slice(-4) + '-' + random;
+    }
+    
+    // Mostrar modal de éxito
+    function showSuccessModal() {
+        const code = generateParticipationCode();
+        document.getElementById('participationCode').textContent = code;
+        document.getElementById('successModal').classList.add('active');
+        
+        // Guardar en historial local
+        saveToHistory(code);
+    }
+    
+    // Cerrar modal de éxito
+    function closeSuccessModal() {
+        document.getElementById('successModal').classList.remove('active');
+    }
+    
+    // Guardar en historial local
+    function saveToHistory(code) {
+        const history = JSON.parse(localStorage.getItem('quinielaHistory') || '[]');
+        history.unshift({
+            code: code,
+            date: new Date().toISOString(),
+            email: form.email.value,
+            status: 'pending'
+        });
+        // Mantener solo las últimas 10 participaciones
+        if (history.length > 10) history.pop();
+        localStorage.setItem('quinielaHistory', JSON.stringify(history));
+    }
+    
+    // Rate limiting
+    let lastSubmitTime = 0;
+    const RATE_LIMIT_MS = 60000; // 1 minuto entre envíos
+    
+    function checkRateLimit() {
+        const now = Date.now();
+        if (now - lastSubmitTime < RATE_LIMIT_MS) {
+            const remaining = Math.ceil((RATE_LIMIT_MS - (now - lastSubmitTime)) / 1000);
+            document.getElementById('rateLimitWarning').classList.add('active');
+            document.getElementById('rateLimitWarning').textContent = 
+                '⏳ Espera ' + remaining + ' segundos antes de enviar otra quiniela';
+            return false;
+        }
+        document.getElementById('rateLimitWarning').classList.remove('active');
+        return true;
+    }
+    
+    // Sanitizar entrada (prevenir XSS)
+    function sanitizeInput(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
+    // Validación completa antes de enviar
+    function validateAllFields() {
+        let isValid = true;
+        let errors = [];
+        
+        // Validar predicciones
+        let missingMatches = [];
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
+            if (!form.querySelector(`input[name="p${i}"]:checked`)) {
+                missingMatches.push(i);
+                isValid = false;
+            }
+        }
+        
+        if (missingMatches.length > 0) {
+            errors.push('Faltan predicciones en los partidos: ' + missingMatches.join(', '));
+        }
+        
+        // Validar nombre
+        const nombre = form.nombre.value.trim();
+        if (nombre.length < 3) {
+            errors.push('El nombre debe tener al menos 3 caracteres');
+            isValid = false;
+        }
+        
+        // Validar email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(form.email.value.trim())) {
+            errors.push('El correo electrónico no es válido');
+            isValid = false;
+        }
+        
+        // Validar teléfono
+        const telefono = form.telefono.value.replace(/\D/g, '');
+        if (telefono.length < 10) {
+            errors.push('El teléfono debe tener 10 dígitos');
+            isValid = false;
+        }
+        
+        // Validar términos
+        if (!form.terms.checked) {
+            errors.push('Debes aceptar los términos y condiciones');
+            isValid = false;
+        }
+        
+        return { isValid, errors };
+    }
+
+    // Inicializar al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+        initProgressDots();
+        
+        // Actualizar dots cuando cambia una selección
+        document.querySelectorAll('.options input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', updateProgressDots);
+        });
+    });
+    
+    // ==================== ADMIN: EXPORTAR CSV ====================
+    function exportParticipantsCSV() {
+        // Esta función simula exportar datos - en producción se conectaría a Google Sheets
+        const csvContent = "Nombre,Email,Teléfono,Fecha,P1,P2,P3,P4,P5,P6,P7,P8,P9\n";
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'participantes_jornada_' + new Date().toISOString().split('T')[0] + '.csv';
+        link.click();
+        URL.revokeObjectURL(url);
+        showToast('Archivo CSV generado', 'success');
+    }
+
 </script>
 
 </body>
