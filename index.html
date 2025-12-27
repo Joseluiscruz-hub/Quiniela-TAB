@@ -1068,6 +1068,41 @@
             font-weight: 700;
             color: var(--text-secondary);
         }
+
+        /* Password Strength Indicator */
+        .password-strength {
+            height: 4px;
+            border-radius: 2px;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+            background: var(--border-color);
+        }
+
+        .password-strength.weak {
+            background: linear-gradient(to right, #ef4444 0%, #ef4444 33%, var(--border-color) 33%);
+        }
+
+        .password-strength.medium {
+            background: linear-gradient(to right, #f59e0b 0%, #f59e0b 66%, var(--border-color) 66%);
+        }
+
+        .password-strength.strong {
+            background: linear-gradient(to right, #10b981 0%, #10b981 100%);
+        }
+
+        .password-requirements {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .password-requirements.valid {
+            color: var(--success);
+        }
+
+        .password-requirements.invalid {
+            color: var(--danger);
+        }
     </style>
 </head>
 <body>
@@ -1098,6 +1133,7 @@
                 <button class="admin-tab" onclick="switchTab('matches')">⚽ Partidos</button>
                 <button class="admin-tab" onclick="switchTab('results')">🏆 Resultados</button>
                 <button class="admin-tab" onclick="switchTab('export')">💾 Datos</button>
+                <button class="admin-tab" onclick="switchTab('security')">🔒 Seguridad</button>
             </div>
             
             <div class="admin-content">
@@ -1211,6 +1247,43 @@
                         <h4>🗑️ Resetear Configuración</h4>
                         <p style="color: var(--text-secondary); margin-bottom: 15px;">Restaura la configuración a los valores por defecto</p>
                         <button class="btn-danger" style="width: 100%;" onclick="resetConfig()">🔄 Resetear a Valores por Defecto</button>
+                    </div>
+                
+                <!-- Security Tab -->
+                <div id="tab-security" class="tab-panel">
+                    <div class="admin-section">
+                        <h4>🔑 Cambiar Contraseña</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">
+                            La contraseña debe tener al menos 8 caracteres, incluir mayúsculas, minúsculas y números.
+                        </p>
+                        <div class="admin-input-group">
+                            <label for="currentPassword">Contraseña Actual</label>
+                            <input type="password" id="currentPassword" placeholder="Ingresa tu contraseña actual">
+                        </div>
+                        <div class="admin-input-group">
+                            <label for="newPassword">Nueva Contraseña</label>
+                            <input type="password" id="newPassword" placeholder="Mínimo 8 caracteres" oninput="updatePasswordStrength()">
+                            <div id="passwordStrength" class="password-strength"></div>
+                            <div id="passwordRequirements" class="password-requirements"></div>
+                        </div>
+                        <div class="admin-input-group">
+                            <label for="confirmPassword">Confirmar Nueva Contraseña</label>
+                            <input type="password" id="confirmPassword" placeholder="Repite la nueva contraseña">
+                        </div>
+                        <div class="admin-actions">
+                            <button class="btn-success" style="flex: 1;" onclick="changePassword()">🔐 Cambiar Contraseña</button>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h4>📋 Información de Seguridad</h4>
+                        <p style="color: var(--text-secondary);">
+                            • La contraseña se almacena de forma segura usando hash SHA-256<br>
+                            • Nunca compartas tu contraseña con terceros<br>
+                            • Cambia tu contraseña periódicamente<br>
+                            • Contraseña por defecto: <code style="background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px;">admin123</code>
+                        </p>
+                        <p id="lastPasswordChange" style="color: var(--warning); margin-top: 15px; font-weight: 500;"></p>
                     </div>
                 </div>
             </div>
@@ -1874,7 +1947,156 @@ Al participar, aceptas estos términos y condiciones.`);
     }
 
     // ==================== ADMIN PANEL ====================
-    const ADMIN_PASSWORD = 'admin123'; // Cambiar por una contraseña segura
+    // ==================== SISTEMA DE CONTRASEÑA SEGURA ====================
+    const DEFAULT_PASSWORD_HASH = '240be518fabd2724ddb6f04eeb9d5b63d8d01c7df5c0ec37cd85e74be8e4c8a9'; // Hash de 'admin123'
+    
+    // Función para generar hash SHA-256
+    async function hashPassword(password) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+    
+    // Obtener el hash de contraseña almacenado
+    function getStoredPasswordHash() {
+        return localStorage.getItem('adminPasswordHash') || DEFAULT_PASSWORD_HASH;
+    }
+    
+    // Guardar nuevo hash de contraseña
+    function setStoredPasswordHash(hash) {
+        localStorage.setItem('adminPasswordHash', hash);
+        localStorage.setItem('lastPasswordChange', new Date().toISOString());
+    }
+    
+    // Validar fortaleza de contraseña
+    function validatePasswordStrength(password) {
+        const minLength = password.length >= 8;
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasLowercase = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+        
+        let strength = 0;
+        if (minLength) strength++;
+        if (hasUppercase && hasLowercase) strength++;
+        if (hasNumber) strength++;
+        if (hasSpecial) strength++;
+        
+        let messages = [];
+        if (!minLength) messages.push('8+ caracteres');
+        if (!hasUppercase) messages.push('mayúscula');
+        if (!hasLowercase) messages.push('minúscula');
+        if (!hasNumber) messages.push('número');
+        
+        return {
+            isValid: minLength && hasUppercase && hasLowercase && hasNumber,
+            strength: strength,
+            messages: messages
+        };
+    }
+    
+    // Actualizar indicador de fortaleza visual
+    function updatePasswordStrength() {
+        const password = document.getElementById('newPassword').value;
+        const indicator = document.getElementById('passwordStrength');
+        const requirements = document.getElementById('passwordRequirements');
+        const validation = validatePasswordStrength(password);
+        
+        indicator.className = 'password-strength';
+        
+        if (password.length === 0) {
+            requirements.textContent = '';
+            requirements.className = 'password-requirements';
+        } else if (validation.strength <= 1) {
+            indicator.classList.add('weak');
+            requirements.textContent = 'Falta: ' + validation.messages.join(', ');
+            requirements.className = 'password-requirements invalid';
+        } else if (validation.strength <= 2) {
+            indicator.classList.add('medium');
+            requirements.textContent = 'Falta: ' + validation.messages.join(', ');
+            requirements.className = 'password-requirements invalid';
+        } else {
+            indicator.classList.add('strong');
+            requirements.textContent = '✓ Contraseña segura';
+            requirements.className = 'password-requirements valid';
+        }
+    }
+    
+    // Cambiar contraseña
+    async function changePassword() {
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        
+        if (!currentPassword || !newPassword || !confirmPassword) {
+            showToast('Completa todos los campos', 'warning');
+            return;
+        }
+        
+        // Verificar contraseña actual
+        const currentHash = await hashPassword(currentPassword);
+        if (currentHash !== getStoredPasswordHash()) {
+            showToast('La contraseña actual es incorrecta', 'error');
+            return;
+        }
+        
+        // Validar nueva contraseña
+        const validation = validatePasswordStrength(newPassword);
+        if (!validation.isValid) {
+            showToast('La contraseña no cumple los requisitos mínimos', 'warning');
+            return;
+        }
+        
+        // Verificar que coincidan
+        if (newPassword !== confirmPassword) {
+            showToast('Las contraseñas no coinciden', 'error');
+            return;
+        }
+        
+        // Verificar que sea diferente a la anterior
+        const newHash = await hashPassword(newPassword);
+        if (newHash === getStoredPasswordHash()) {
+            showToast('La nueva contraseña debe ser diferente a la actual', 'warning');
+            return;
+        }
+        
+        // Guardar nueva contraseña
+        setStoredPasswordHash(newHash);
+        
+        // Limpiar campos
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+        document.getElementById('passwordStrength').className = 'password-strength';
+        document.getElementById('passwordRequirements').textContent = '';
+        
+        updateLastPasswordChangeDisplay();
+        showToast('¡Contraseña cambiada exitosamente!', 'success');
+    }
+    
+    // Mostrar última actualización de contraseña
+    function updateLastPasswordChangeDisplay() {
+        const lastChange = localStorage.getItem('lastPasswordChange');
+        const element = document.getElementById('lastPasswordChange');
+        if (element) {
+            if (lastChange) {
+                const date = new Date(lastChange);
+                element.textContent = '🕐 Último cambio: ' + date.toLocaleDateString('es-MX', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                element.style.color = 'var(--success)';
+            } else {
+                element.textContent = '⚠️ Usando contraseña por defecto - ¡Se recomienda cambiarla!';
+                element.style.color = 'var(--warning)';
+            }
+        }
+    }
     let isAdminLoggedIn = false;
     
     // Default configuration
@@ -1914,14 +2136,23 @@ Al participar, aceptas estos términos y condiciones.`);
         document.getElementById('adminPassword').value = '';
     }
     
-    function adminLogin() {
+    async function adminLogin() {
         const password = document.getElementById('adminPassword').value;
-        if (password === ADMIN_PASSWORD) {
+        if (!password) {
+            showToast('Ingresa una contraseña', 'warning');
+            return;
+        }
+        
+        const hashedInput = await hashPassword(password);
+        const storedHash = getStoredPasswordHash();
+        
+        if (hashedInput === storedHash) {
             isAdminLoggedIn = true;
             document.getElementById('adminLoginSection').style.display = 'none';
             document.getElementById('adminPanelContent').style.display = 'block';
             loadAdminConfig();
-            showToast('Acceso concedido', 'success');
+            updateLastPasswordChangeDisplay();
+            showToast('✓ Acceso concedido', 'success');
         } else {
             showToast('Contraseña incorrecta', 'error');
             document.getElementById('adminPassword').value = '';
@@ -1942,6 +2173,8 @@ Al participar, aceptas estos términos y condiciones.`);
             renderMatchesConfig();
         } else if (tabName === 'results') {
             renderResultsConfig();
+        } else if (tabName === 'security') {
+            updateLastPasswordChangeDisplay();
         }
     }
     
