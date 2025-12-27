@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
     <meta name="description" content="Quiniela Oficial Liga MX - Participa y gana premios prediciendo los resultados">
     <meta name="theme-color" content="#1a1a2e">
     <title>🏆 Quiniela Liga MX - Jornada 1</title>
@@ -628,16 +628,614 @@
             font-weight: 800;
         }
 
-        /* Responsive */
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        
+        /* Tablets y pantallas medianas (768px - 1024px) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            .stats-bar {
+                gap: 15px;
+            }
+            
+            .admin-panel {
+                width: 95%;
+                max-width: 600px;
+            }
+            
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Tablets pequeñas (600px - 768px) */
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 12px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            
+            .stats-bar {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .stat-item {
+                flex: 1 1 30%;
+                min-width: 80px;
+            }
+            
+            .match-card {
+                padding: 20px 15px;
+            }
+            
+            .teams {
+                gap: 10px;
+            }
+            
+            .team-logo {
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+            
+            .team-name {
+                font-size: 0.9rem;
+            }
+            
+            .vs-badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            .options {
+                gap: 8px;
+            }
+            
+            .options label {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            .prize-banner {
+                padding: 20px;
+            }
+            
+            .prize-amount {
+                font-size: 1.8rem;
+            }
+            
+            .legend {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .faq-section {
+                padding: 15px;
+            }
+            
+            .faq-question {
+                font-size: 0.95rem;
+            }
+            
+            .admin-tabs {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            
+            .admin-tab {
+                flex: 1 1 45%;
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .modal {
+                width: 95%;
+                padding: 20px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            .predictions-summary {
+                max-height: 200px;
+            }
+        }
+        
+        /* Móviles grandes (480px - 600px) */
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .header {
+                padding: 20px 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .header .jornada {
+                font-size: 0.85rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .countdown-container {
+                padding: 15px 10px;
+            }
+            
+            .countdown-title {
+                font-size: 0.85rem;
+            }
+            
+            .countdown {
+                gap: 8px;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 10px 8px;
+            }
+            
+            .countdown-number {
+                font-size: 1.3rem;
+            }
+            
+            .progress-container {
+                padding: 15px;
+            }
+            
+            .progress-dots {
+                gap: 6px;
+            }
+            
+            .progress-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .match-card {
+                padding: 15px 12px;
+                border-radius: 12px;
+            }
+            
+            .match-header {
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-start;
+            }
+            
+            .match-number {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+            }
+            
+            .match-date {
+                font-size: 0.75rem;
+            }
+            
+            .teams {
+                flex-direction: row;
+                gap: 8px;
+                margin: 15px 0;
+            }
+            
+            .team {
+                flex: 1;
+            }
+            
+            .team-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .team-name {
+                font-size: 0.8rem;
+                max-width: 80px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .vs-badge {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+                min-width: auto;
+            }
+            
+            .options {
+                gap: 6px;
+            }
+            
+            .options label {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+            
+            .label-text {
+                display: none;
+            }
+            
+            .user-section {
+                padding: 20px 15px;
+            }
+            
+            .user-section h3 {
+                font-size: 1.1rem;
+            }
+            
+            .input-group input {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            
+            .submit-btn {
+                padding: 16px;
+                font-size: 1rem;
+            }
+            
+            .stats-bar {
+                padding: 15px 10px;
+                gap: 8px;
+            }
+            
+            .stat-item {
+                flex: 1 1 28%;
+            }
+            
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            
+            .stat-label {
+                font-size: 0.65rem;
+            }
+            
+            .prize-banner {
+                padding: 15px;
+                border-radius: 12px;
+            }
+            
+            .prize-banner h3 {
+                font-size: 0.8rem;
+            }
+            
+            .prize-amount {
+                font-size: 1.5rem;
+            }
+            
+            .legend {
+                padding: 10px;
+                gap: 8px;
+            }
+            
+            .legend-item {
+                font-size: 0.75rem;
+            }
+            
+            .toast {
+                max-width: 90%;
+                left: 5%;
+                right: 5%;
+                padding: 12px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .admin-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 1.2rem;
+            }
+            
+            .faq-section {
+                margin-top: 20px;
+                padding: 15px;
+            }
+            
+            .faq-question {
+                font-size: 0.9rem;
+            }
+            
+            .faq-answer {
+                font-size: 0.85rem;
+            }
+            
+            .support-section {
+                padding: 15px;
+            }
+            
+            .support-section h4 {
+                font-size: 1rem;
+            }
+            
+            .footer {
+                padding: 20px 15px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Móviles pequeños (menos de 480px) */
         @media (max-width: 480px) {
-            .header h1 { font-size: 1.4rem; }
-            .countdown-item { min-width: 65px; padding: 10px 15px; }
-            .countdown-number { font-size: 1.4rem; }
-            .team-name { font-size: 0.85rem; }
-            .team-logo { width: 35px; height: 35px; font-size: 1.2rem; }
-            .options label { padding: 12px 8px; font-size: 0.9rem; }
-            .container { padding: 15px; }
-            .toast { max-width: 280px; padding: 12px 16px; }
+            .header h1 {
+                font-size: 1.1rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .header .jornada {
+                font-size: 0.75rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+            
+            .countdown-item {
+                min-width: 55px;
+                padding: 8px 6px;
+            }
+            
+            .countdown-number {
+                font-size: 1.1rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+            
+            .team-logo {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .team-name {
+                font-size: 0.75rem;
+                max-width: 70px;
+            }
+            
+            .options label {
+                padding: 10px 6px;
+                font-size: 0.85rem;
+            }
+            
+            .stat-number {
+                font-size: 1rem;
+            }
+            
+            .modal {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .modal-icon {
+                font-size: 3rem;
+            }
+            
+            .modal h3 {
+                font-size: 1.1rem;
+            }
+            
+            .modal p {
+                font-size: 0.85rem;
+            }
+            
+            .modal-buttons {
+                flex-direction: column;
+            }
+            
+            .modal-btn {
+                width: 100%;
+            }
+            
+            .prediction-item {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .admin-panel {
+                padding: 15px;
+                border-radius: 15px;
+            }
+            
+            .admin-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .admin-tab {
+                flex: 1 1 100%;
+                text-align: center;
+            }
+            
+            .admin-section h4 {
+                font-size: 0.95rem;
+            }
+            
+            .admin-input-group label {
+                font-size: 0.8rem;
+            }
+            
+            .admin-input-group input,
+            .admin-input-group select {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .terms-group {
+                font-size: 0.8rem;
+            }
+            
+            .terms-group label {
+                line-height: 1.4;
+            }
+        }
+        
+        /* Móviles muy pequeños (menos de 360px) */
+        @media (max-width: 360px) {
+            .header h1 {
+                font-size: 1rem;
+            }
+            
+            .countdown-item {
+                min-width: 48px;
+                padding: 6px 4px;
+            }
+            
+            .countdown-number {
+                font-size: 1rem;
+            }
+            
+            .team-logo {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .team-name {
+                font-size: 0.7rem;
+                max-width: 60px;
+            }
+            
+            .options label {
+                padding: 8px 4px;
+                font-size: 0.8rem;
+            }
+            
+            .prize-amount {
+                font-size: 1.3rem;
+            }
+            
+            .stat-item {
+                flex: 1 1 100%;
+            }
+        }
+        
+        /* Ajustes para pantallas landscape en móviles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-container {
+                padding: 10px;
+            }
+            
+            .modal {
+                max-height: 95vh;
+            }
+            
+            .predictions-summary {
+                max-height: 120px;
+            }
+        }
+        
+        /* Mejoras para tablets en landscape */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+            .container {
+                max-width: 800px;
+            }
+            
+            .match-card {
+                padding: 20px;
+            }
+            
+            .admin-panel {
+                max-width: 700px;
+            }
+        }
+        
+        /* Soporte para pantallas de alta densidad */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .team-logo,
+            .logo {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+        
+        /* Preferencia de movimiento reducido */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Modo oscuro del sistema (ya es oscuro, pero ajustes finos) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: dark;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .header,
+            .countdown-container,
+            .admin-btn,
+            .submit-btn,
+            .toast-container,
+            .faq-section,
+            .support-section,
+            .footer {
+                display: none !important;
+            }
+            
+            .match-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
         }
 
         /* Animación de shake para errores */
