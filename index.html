@@ -731,12 +731,492 @@
         .modal-btn:hover {
             transform: translateY(-2px);
         }
+
+        /* Admin Button */
+        .admin-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            z-index: 9998;
+            font-size: 1.5rem;
+            border: none;
+        }
+
+        .admin-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Admin Panel Modal */
+        .admin-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .admin-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .admin-panel {
+            background: var(--bg-card);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .admin-modal.active .admin-panel {
+            transform: scale(1);
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 25px 30px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .admin-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 5px;
+            padding: 20px 30px 0;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .admin-tab {
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+
+        .admin-tab:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .admin-tab.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .admin-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .admin-content {
+            padding: 30px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+        }
+
+        .admin-section h4 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .admin-input-group {
+            margin-bottom: 15px;
+        }
+
+        .admin-input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .admin-input-group input,
+        .admin-input-group select,
+        .admin-input-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-input-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .admin-input-group input:focus,
+        .admin-input-group select:focus,
+        .admin-input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .match-config {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .match-config-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .match-config-header h5 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: var(--success-dark);
+            transform: translateY(-2px);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .admin-login {
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .admin-login h3 {
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .admin-login input {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .admin-login input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .admin-login button {
+            width: 100%;
+            max-width: 300px;
+            padding: 15px;
+            background: var(--primary);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-login button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .result-input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .result-input input {
+            width: 60px;
+            text-align: center;
+        }
+
+        .result-separator {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
 
 <!-- Toast Container -->
 <div class="toast-container" id="toastContainer"></div>
+
+<!-- Admin Button -->
+<button class="admin-btn" onclick="openAdminPanel()" title="Panel de Administrador">⚙️</button>
+
+<!-- Admin Panel Modal -->
+<div class="admin-modal" id="adminModal">
+    <div class="admin-panel">
+        <div id="adminLoginSection" class="admin-login">
+            <h3>🔐 Acceso de Administrador</h3>
+            <input type="password" id="adminPassword" placeholder="Contraseña" onkeypress="if(event.key === 'Enter') adminLogin()">
+            <button onclick="adminLogin()">Iniciar Sesión</button>
+        </div>
+        
+        <div id="adminPanelContent" style="display: none;">
+            <div class="admin-header">
+                <h2>⚙️ Panel de Administración</h2>
+                <button class="admin-close" onclick="closeAdminPanel()">✕</button>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchTab('general')">📊 General</button>
+                <button class="admin-tab" onclick="switchTab('matches')">⚽ Partidos</button>
+                <button class="admin-tab" onclick="switchTab('results')">🏆 Resultados</button>
+                <button class="admin-tab" onclick="switchTab('export')">💾 Datos</button>
+            </div>
+            
+            <div class="admin-content">
+                <!-- General Tab -->
+                <div id="tab-general" class="tab-panel active">
+                    <div class="admin-section">
+                        <h4>🏟️ Información de la Liga</h4>
+                        <div class="admin-grid">
+                            <div class="admin-input-group">
+                                <label for="adminLeagueName">Nombre de la Liga</label>
+                                <input type="text" id="adminLeagueName" placeholder="Liga MX">
+                            </div>
+                            <div class="admin-input-group">
+                                <label for="adminSeason">Temporada</label>
+                                <input type="text" id="adminSeason" placeholder="Clausura 2025">
+                            </div>
+                            <div class="admin-input-group">
+                                <label for="adminJornada">Jornada</label>
+                                <input type="number" id="adminJornada" placeholder="1" min="1">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h4>⏰ Configuración de Tiempo</h4>
+                        <div class="admin-grid">
+                            <div class="admin-input-group">
+                                <label for="adminDeadlineDate">Fecha Límite</label>
+                                <input type="date" id="adminDeadlineDate">
+                            </div>
+                            <div class="admin-input-group">
+                                <label for="adminDeadlineTime">Hora Límite</label>
+                                <input type="time" id="adminDeadlineTime">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h4>🏆 Premios</h4>
+                        <div class="admin-grid">
+                            <div class="admin-input-group">
+                                <label for="adminPrize1">1er Lugar (MXN)</label>
+                                <input type="number" id="adminPrize1" placeholder="1000" min="0">
+                            </div>
+                            <div class="admin-input-group">
+                                <label for="adminPrize2">2do Lugar (MXN)</label>
+                                <input type="number" id="adminPrize2" placeholder="500" min="0">
+                            </div>
+                            <div class="admin-input-group">
+                                <label for="adminPrize3">3er Lugar (MXN)</label>
+                                <input type="number" id="adminPrize3" placeholder="500" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h4>📊 Estadísticas</h4>
+                        <div class="admin-input-group">
+                            <label for="adminParticipants">Número de Participantes</label>
+                            <input type="number" id="adminParticipants" placeholder="247" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="admin-actions">
+                        <button class="btn-success" style="flex: 1;" onclick="saveGeneralConfig()">💾 Guardar Configuración</button>
+                    </div>
+                </div>
+                
+                <!-- Matches Tab -->
+                <div id="tab-matches" class="tab-panel">
+                    <div class="admin-section">
+                        <h4>⚽ Configuración de Partidos</h4>
+                        <div id="matchesConfigContainer"></div>
+                        <button class="btn-primary" style="width: 100%; margin-top: 15px;" onclick="addMatchConfig()">➕ Agregar Partido</button>
+                    </div>
+                    
+                    <div class="admin-actions">
+                        <button class="btn-success" style="flex: 1;" onclick="saveMatchesConfig()">💾 Guardar Partidos</button>
+                    </div>
+                </div>
+                
+                <!-- Results Tab -->
+                <div id="tab-results" class="tab-panel">
+                    <div class="admin-section">
+                        <h4>🏆 Captura de Resultados</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 20px;">Ingresa los resultados finales de cada partido</p>
+                        <div id="resultsConfigContainer"></div>
+                    </div>
+                    
+                    <div class="admin-actions">
+                        <button class="btn-success" style="flex: 1;" onclick="saveResults()">💾 Guardar Resultados</button>
+                    </div>
+                </div>
+                
+                <!-- Export/Import Tab -->
+                <div id="tab-export" class="tab-panel">
+                    <div class="admin-section">
+                        <h4>💾 Exportar Configuración</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Descarga la configuración actual en formato JSON</p>
+                        <button class="btn-primary" style="width: 100%;" onclick="exportConfig()">📥 Exportar Configuración</button>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h4>📤 Importar Configuración</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Carga una configuración desde un archivo JSON</p>
+                        <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importConfig(this)">
+                        <button class="btn-primary" style="width: 100%;" onclick="document.getElementById('importFile').click()">📤 Importar Configuración</button>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <h4>🗑️ Resetear Configuración</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Restaura la configuración a los valores por defecto</p>
+                        <button class="btn-danger" style="width: 100%;" onclick="resetConfig()">🔄 Resetear a Valores por Defecto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal de confirmación -->
 <div class="modal-overlay" id="confirmModal">
@@ -1114,8 +1594,8 @@
 <script>
     // ==================== CONFIGURACIÓN ====================
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzaCNYQ46HVgp3jb97jAp5tvdlF7VHfQ4j9Fg3fNy12AKLyYl5O0SWfRRPH2IObNgmemQ/exec";
-    const TOTAL_MATCHES = 9;
-    const DEADLINE = new Date('2026-01-10T18:00:00'); // Fecha límite para participar
+    window.TOTAL_MATCHES = 9;
+    window.DEADLINE = new Date('2026-01-10T18:00:00'); // Fecha límite para participar
 
     // ==================== ELEMENTOS DOM ====================
     const form = document.getElementById('quinielaForm');
@@ -1128,7 +1608,7 @@
     // ==================== CONTADOR DE TIEMPO ====================
     function updateCountdown() {
         const now = new Date();
-        const diff = DEADLINE - now;
+        const diff = window.DEADLINE - now;
 
         if (diff <= 0) {
             document.getElementById('days').textContent = '00';
@@ -1157,14 +1637,14 @@
     // ==================== BARRA DE PROGRESO ====================
     function updateProgress() {
         let selected = 0;
-        for (let i = 1; i <= TOTAL_MATCHES; i++) {
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
             if (form.querySelector(`input[name="p${i}"]:checked`)) {
                 selected++;
             }
         }
-        const percentage = (selected / TOTAL_MATCHES) * 100;
+        const percentage = (selected / window.TOTAL_MATCHES) * 100;
         progressFill.style.width = `${percentage}%`;
-        progressText.textContent = `${selected} de ${TOTAL_MATCHES} partidos`;
+        progressText.textContent = `${selected} de ${window.TOTAL_MATCHES} partidos`;
         
         // Guardar en localStorage
         saveToLocalStorage();
@@ -1189,7 +1669,7 @@
             predictions: {}
         };
         
-        for (let i = 1; i <= TOTAL_MATCHES; i++) {
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
             const checked = form.querySelector(`input[name="p${i}"]:checked`);
             if (checked) {
                 data.predictions[`p${i}`] = checked.value;
@@ -1264,7 +1744,7 @@
         let allSelected = true;
         let firstMissing = null;
         
-        for (let i = 1; i <= TOTAL_MATCHES; i++) {
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
             if (!form.querySelector(`input[name="p${i}"]:checked`)) {
                 allSelected = false;
                 if (!firstMissing) {
@@ -1311,7 +1791,7 @@
             timestamp: new Date().toISOString()
         };
 
-        for (let i = 1; i <= TOTAL_MATCHES; i++) {
+        for (let i = 1; i <= window.TOTAL_MATCHES; i++) {
             data[`p${i}`] = form.querySelector(`input[name="p${i}"]:checked`).value;
         }
 
@@ -1392,6 +1872,419 @@ Al participar, aceptas estos términos y condiciones.`);
         // Aquí podrías registrar un service worker para PWA
         // navigator.serviceWorker.register('/sw.js');
     }
+
+    // ==================== ADMIN PANEL ====================
+    const ADMIN_PASSWORD = 'admin123'; // Cambiar por una contraseña segura
+    let isAdminLoggedIn = false;
+    
+    // Default configuration
+    const DEFAULT_CONFIG = {
+        leagueName: 'Quiniela Liga MX',
+        season: 'Clausura 2025',
+        jornada: 1,
+        deadlineDate: '2026-01-10',
+        deadlineTime: '18:00',
+        prize1: 1000,
+        prize2: 500,
+        prize3: 500,
+        participants: 247,
+        matches: [
+            { number: 1, home: 'América', homeLogo: '🦅', away: 'Chivas', awayLogo: '🐐', date: 'Vie 10 Ene', time: '19:00' },
+            { number: 2, home: 'Cruz Azul', homeLogo: '🚂', away: 'Rayados', awayLogo: '⚡', date: 'Vie 10 Ene', time: '21:00' },
+            { number: 3, home: 'León', homeLogo: '🦁', away: 'Pumas', awayLogo: '🐾', date: 'Sáb 11 Ene', time: '17:00' },
+            { number: 4, home: 'Tigres', homeLogo: '🐯', away: 'Toluca', awayLogo: '😈', date: 'Sáb 11 Ene', time: '19:00' },
+            { number: 5, home: 'Pachuca', homeLogo: '🔵', away: 'Santos', awayLogo: '🟢', date: 'Sáb 11 Ene', time: '21:00' },
+            { number: 6, home: 'Querétaro', homeLogo: '🦈', away: 'Mazatlán', awayLogo: '⚓', date: 'Dom 12 Ene', time: '12:00' },
+            { number: 7, home: 'Atlas', homeLogo: '🔴', away: 'Necaxa', awayLogo: '🟡', date: 'Dom 12 Ene', time: '17:00' },
+            { number: 8, home: 'Juárez', homeLogo: '🦂', away: 'San Luis', awayLogo: '🌵', date: 'Dom 12 Ene', time: '19:00' },
+            { number: 9, home: 'Puebla', homeLogo: '🏛️', away: 'Tijuana', awayLogo: '🐴', date: 'Dom 12 Ene', time: '21:00' }
+        ],
+        results: []
+    };
+    
+    function openAdminPanel() {
+        document.getElementById('adminModal').classList.add('active');
+    }
+    
+    function closeAdminPanel() {
+        document.getElementById('adminModal').classList.remove('active');
+        isAdminLoggedIn = false;
+        document.getElementById('adminLoginSection').style.display = 'block';
+        document.getElementById('adminPanelContent').style.display = 'none';
+        document.getElementById('adminPassword').value = '';
+    }
+    
+    function adminLogin() {
+        const password = document.getElementById('adminPassword').value;
+        if (password === ADMIN_PASSWORD) {
+            isAdminLoggedIn = true;
+            document.getElementById('adminLoginSection').style.display = 'none';
+            document.getElementById('adminPanelContent').style.display = 'block';
+            loadAdminConfig();
+            showToast('Acceso concedido', 'success');
+        } else {
+            showToast('Contraseña incorrecta', 'error');
+            document.getElementById('adminPassword').value = '';
+        }
+    }
+    
+    function switchTab(tabName) {
+        // Update tab buttons
+        document.querySelectorAll('.admin-tab').forEach(tab => tab.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        // Update tab panels
+        document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+        document.getElementById(`tab-${tabName}`).classList.add('active');
+        
+        // Load specific tab data
+        if (tabName === 'matches') {
+            renderMatchesConfig();
+        } else if (tabName === 'results') {
+            renderResultsConfig();
+        }
+    }
+    
+    function getAdminConfig() {
+        const saved = localStorage.getItem('adminConfig');
+        return saved ? JSON.parse(saved) : DEFAULT_CONFIG;
+    }
+    
+    function saveAdminConfig(config) {
+        localStorage.setItem('adminConfig', JSON.stringify(config));
+    }
+    
+    function loadAdminConfig() {
+        const config = getAdminConfig();
+        
+        // Load general settings
+        document.getElementById('adminLeagueName').value = config.leagueName || '';
+        document.getElementById('adminSeason').value = config.season || '';
+        document.getElementById('adminJornada').value = config.jornada || 1;
+        document.getElementById('adminDeadlineDate').value = config.deadlineDate || '';
+        document.getElementById('adminDeadlineTime').value = config.deadlineTime || '';
+        document.getElementById('adminPrize1').value = config.prize1 || 0;
+        document.getElementById('adminPrize2').value = config.prize2 || 0;
+        document.getElementById('adminPrize3').value = config.prize3 || 0;
+        document.getElementById('adminParticipants').value = config.participants || 0;
+    }
+    
+    function saveGeneralConfig() {
+        const config = getAdminConfig();
+        
+        config.leagueName = document.getElementById('adminLeagueName').value;
+        config.season = document.getElementById('adminSeason').value;
+        config.jornada = parseInt(document.getElementById('adminJornada').value) || 1;
+        config.deadlineDate = document.getElementById('adminDeadlineDate').value;
+        config.deadlineTime = document.getElementById('adminDeadlineTime').value;
+        config.prize1 = parseInt(document.getElementById('adminPrize1').value) || 0;
+        config.prize2 = parseInt(document.getElementById('adminPrize2').value) || 0;
+        config.prize3 = parseInt(document.getElementById('adminPrize3').value) || 0;
+        config.participants = parseInt(document.getElementById('adminParticipants').value) || 0;
+        
+        saveAdminConfig(config);
+        applyConfiguration();
+        showToast('Configuración general guardada', 'success');
+    }
+    
+    function renderMatchesConfig() {
+        const config = getAdminConfig();
+        const container = document.getElementById('matchesConfigContainer');
+        
+        if (!config.matches || config.matches.length === 0) {
+            config.matches = DEFAULT_CONFIG.matches;
+        }
+        
+        container.innerHTML = config.matches.map((match, index) => `
+            <div class="match-config" data-index="${index}">
+                <div class="match-config-header">
+                    <h5>Partido ${match.number}</h5>
+                    <button class="btn-small btn-danger" onclick="removeMatch(${index})">🗑️ Eliminar</button>
+                </div>
+                <div class="admin-grid">
+                    <div class="admin-input-group">
+                        <label>Equipo Local</label>
+                        <input type="text" value="${match.home}" onchange="updateMatch(${index}, 'home', this.value)">
+                    </div>
+                    <div class="admin-input-group">
+                        <label>Logo Local</label>
+                        <input type="text" value="${match.homeLogo}" onchange="updateMatch(${index}, 'homeLogo', this.value)">
+                    </div>
+                    <div class="admin-input-group">
+                        <label>Equipo Visitante</label>
+                        <input type="text" value="${match.away}" onchange="updateMatch(${index}, 'away', this.value)">
+                    </div>
+                    <div class="admin-input-group">
+                        <label>Logo Visitante</label>
+                        <input type="text" value="${match.awayLogo}" onchange="updateMatch(${index}, 'awayLogo', this.value)">
+                    </div>
+                    <div class="admin-input-group">
+                        <label>Fecha</label>
+                        <input type="text" value="${match.date}" onchange="updateMatch(${index}, 'date', this.value)">
+                    </div>
+                    <div class="admin-input-group">
+                        <label>Hora</label>
+                        <input type="time" value="${match.time}" onchange="updateMatch(${index}, 'time', this.value)">
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    function updateMatch(index, field, value) {
+        const config = getAdminConfig();
+        config.matches[index][field] = value;
+        saveAdminConfig(config);
+    }
+    
+    function addMatchConfig() {
+        const config = getAdminConfig();
+        const newNumber = config.matches.length + 1;
+        config.matches.push({
+            number: newNumber,
+            home: 'Equipo Local',
+            homeLogo: '⚽',
+            away: 'Equipo Visitante',
+            awayLogo: '⚽',
+            date: 'Fecha',
+            time: '20:00'
+        });
+        saveAdminConfig(config);
+        renderMatchesConfig();
+        showToast('Partido agregado', 'success');
+    }
+    
+    function removeMatch(index) {
+        if (!confirm('¿Estás seguro de eliminar este partido?')) return;
+        
+        const config = getAdminConfig();
+        config.matches.splice(index, 1);
+        // Renumber matches
+        config.matches.forEach((match, idx) => {
+            match.number = idx + 1;
+        });
+        saveAdminConfig(config);
+        renderMatchesConfig();
+        showToast('Partido eliminado', 'success');
+    }
+    
+    function saveMatchesConfig() {
+        applyConfiguration();
+        showToast('Configuración de partidos guardada', 'success');
+    }
+    
+    function renderResultsConfig() {
+        const config = getAdminConfig();
+        const container = document.getElementById('resultsConfigContainer');
+        
+        if (!config.results) {
+            config.results = [];
+        }
+        
+        container.innerHTML = config.matches.map((match, index) => {
+            const result = config.results[index] || { home: '', away: '' };
+            return `
+                <div class="match-config">
+                    <div class="match-config-header">
+                        <h5>${match.home} vs ${match.away}</h5>
+                    </div>
+                    <div class="result-input">
+                        <div class="admin-input-group" style="margin: 0;">
+                            <label>${match.home}</label>
+                            <input type="number" min="0" value="${result.home}" 
+                                   onchange="updateResult(${index}, 'home', this.value)" 
+                                   placeholder="0">
+                        </div>
+                        <span class="result-separator">-</span>
+                        <div class="admin-input-group" style="margin: 0;">
+                            <label>${match.away}</label>
+                            <input type="number" min="0" value="${result.away}" 
+                                   onchange="updateResult(${index}, 'away', this.value)" 
+                                   placeholder="0">
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    
+    function updateResult(index, field, value) {
+        const config = getAdminConfig();
+        if (!config.results[index]) {
+            config.results[index] = { home: '', away: '' };
+        }
+        config.results[index][field] = value;
+        saveAdminConfig(config);
+    }
+    
+    function saveResults() {
+        showToast('Resultados guardados correctamente', 'success');
+    }
+    
+    function applyConfiguration() {
+        const config = getAdminConfig();
+        
+        // Update header
+        const headerTitle = document.querySelector('.header h1');
+        if (headerTitle && config.leagueName) {
+            headerTitle.textContent = config.leagueName;
+        }
+        
+        const jornada = document.querySelector('.header .jornada');
+        if (jornada && config.season && config.jornada) {
+            jornada.textContent = `${config.season} • Jornada ${config.jornada}`;
+        }
+        
+        // Update title
+        if (config.leagueName && config.jornada) {
+            document.title = `🏆 ${config.leagueName} - Jornada ${config.jornada}`;
+        }
+        
+        // Update deadline
+        if (config.deadlineDate && config.deadlineTime) {
+            const newDeadline = new Date(`${config.deadlineDate}T${config.deadlineTime}:00`);
+            window.DEADLINE = newDeadline;
+            updateCountdown();
+        }
+        
+        // Update prizes
+        const prizeAmount = document.querySelector('.prize-amount');
+        if (prizeAmount && config.prize1) {
+            prizeAmount.textContent = `$${config.prize1.toLocaleString()} MXN`;
+        }
+        
+        const statsBar = document.querySelector('.stats-bar');
+        if (statsBar) {
+            const totalPrizes = config.prize1 + config.prize2 + config.prize3;
+            statsBar.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-number" id="participantes">${config.participants}</div>
+                    <div class="stat-label">Participantes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">${config.matches.length}</div>
+                    <div class="stat-label">Partidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$${totalPrizes.toLocaleString()}</div>
+                    <div class="stat-label">En premios</div>
+                </div>
+            `;
+        }
+        
+        // Update matches
+        updateMatchesDisplay();
+    }
+    
+    function updateMatchesDisplay() {
+        const config = getAdminConfig();
+        const formElement = document.getElementById('quinielaForm');
+        
+        // Remove old match cards
+        const oldCards = formElement.querySelectorAll('.match-card');
+        oldCards.forEach(card => card.remove());
+        
+        // Get reference point (user section)
+        const userSection = formElement.querySelector('.user-section');
+        
+        // Add new match cards
+        config.matches.forEach(match => {
+            const matchCard = document.createElement('div');
+            matchCard.className = 'match-card';
+            matchCard.setAttribute('data-match', match.number);
+            matchCard.innerHTML = `
+                <div class="match-header">
+                    <div class="match-number">${match.number}</div>
+                    <div class="match-date">📅 ${match.date} • ${match.time}</div>
+                </div>
+                <div class="teams">
+                    <div class="team home">
+                        <div class="team-logo">${match.homeLogo}</div>
+                        <span class="team-name">${match.home}</span>
+                    </div>
+                    <div class="vs-badge">VS</div>
+                    <div class="team away">
+                        <div class="team-logo">${match.awayLogo}</div>
+                        <span class="team-name">${match.away}</span>
+                    </div>
+                </div>
+                <div class="options">
+                    <input type="radio" name="p${match.number}" id="p${match.number}L" value="L" required>
+                    <label for="p${match.number}L">L<span class="label-text">Local</span></label>
+                    <input type="radio" name="p${match.number}" id="p${match.number}E" value="E">
+                    <label for="p${match.number}E">E<span class="label-text">Empate</span></label>
+                    <input type="radio" name="p${match.number}" id="p${match.number}V" value="V">
+                    <label for="p${match.number}V">V<span class="label-text">Visita</span></label>
+                </div>
+            `;
+            
+            formElement.insertBefore(matchCard, userSection);
+        });
+        
+        // Re-attach event listeners for new cards
+        document.querySelectorAll('.options input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const card = this.closest('.match-card');
+                card.classList.remove('selected-L', 'selected-E', 'selected-V');
+                card.classList.add(`selected-${this.value}`);
+                updateProgress();
+            });
+        });
+        
+        // Update total matches constant
+        window.TOTAL_MATCHES = config.matches.length;
+        updateProgress();
+    }
+    
+    function exportConfig() {
+        const config = getAdminConfig();
+        const dataStr = JSON.stringify(config, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `quiniela-config-${new Date().toISOString().split('T')[0]}.json`;
+        link.click();
+        URL.revokeObjectURL(url);
+        showToast('Configuración exportada', 'success');
+    }
+    
+    function importConfig(input) {
+        const file = input.files[0];
+        if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const config = JSON.parse(e.target.result);
+                saveAdminConfig(config);
+                loadAdminConfig();
+                applyConfiguration();
+                showToast('Configuración importada correctamente', 'success');
+                input.value = '';
+            } catch (error) {
+                showToast('Error al importar: archivo inválido', 'error');
+                input.value = '';
+            }
+        };
+        reader.readAsText(file);
+    }
+    
+    function resetConfig() {
+        if (!confirm('¿Estás seguro de resetear toda la configuración? Esta acción no se puede deshacer.')) {
+            return;
+        }
+        
+        saveAdminConfig(DEFAULT_CONFIG);
+        loadAdminConfig();
+        applyConfiguration();
+        showToast('Configuración restablecida a valores por defecto', 'success');
+    }
+    
+    // Apply configuration on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        applyConfiguration();
+    });
 
     // ==================== ANIMACIÓN DE ENTRADA ====================
     const observer = new IntersectionObserver((entries) => {
