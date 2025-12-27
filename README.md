@@ -14,14 +14,32 @@ Esta es una aplicación web moderna y responsive para crear y participar en quin
 
 ## 🚀 Despliegue
 
-### GitHub Pages
+### GitHub Pages (Recomendado)
 
-La aplicación está lista para desplegarse en GitHub Pages:
+La aplicación está completamente configurada para desplegarse automáticamente en GitHub Pages:
 
-1. Ve a Settings → Pages
-2. En "Source", selecciona la rama principal
+#### Configuración Inicial (Solo una vez)
+
+1. Ve a la configuración del repositorio: `Settings → Pages`
+2. En la sección **Build and deployment**:
+   - **Source**: Selecciona "GitHub Actions"
 3. Guarda los cambios
-4. La aplicación estará disponible en: `https://joseluiscruz-hub.github.io/Quiniela-TAB/`
+
+#### Despliegue Automático
+
+Una vez configurado, la aplicación se desplegará automáticamente cuando:
+- Se haga push a la rama `main` o `master`
+- Se haga push a la rama `copilot/accept-changes-and-launch-app`
+- Se ejecute manualmente desde la pestaña "Actions"
+
+La aplicación estará disponible en: `https://joseluiscruz-hub.github.io/Quiniela-TAB/`
+
+#### Despliegue Manual
+
+Si prefieres hacer un despliegue manual:
+1. Ve a la pestaña **Actions** en GitHub
+2. Selecciona el workflow "Deploy to GitHub Pages"
+3. Haz clic en "Run workflow"
 
 ### Despliegue Local
 
