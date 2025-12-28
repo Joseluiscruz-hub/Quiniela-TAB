@@ -205,6 +205,407 @@
         padding: 20px;
       }
 
+      /* ==================== ESTILOS PARA PC/DESKTOP ==================== */
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 1200px;
+          padding: 30px 40px;
+        }
+
+        /* Grid de partidos para PC */
+        .matches-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .match-card {
+          margin-bottom: 0;
+        }
+
+        /* Header más grande en PC */
+        .header {
+          padding: 40px 30px;
+        }
+
+        .header h1 {
+          font-size: 2.2rem;
+        }
+
+        .logo {
+          font-size: 4rem;
+        }
+
+        /* Stats bar en línea */
+        .stats-bar {
+          padding: 25px 40px;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+
+        .stat-label {
+          font-size: 0.85rem;
+        }
+
+        /* Premio banner más grande */
+        .prize-banner {
+          padding: 30px;
+        }
+
+        .prize-amount {
+          font-size: 2.5rem;
+        }
+
+        /* User section centrada pero más ancha */
+        .user-section {
+          max-width: 800px;
+          margin: 30px auto;
+          padding: 35px;
+        }
+
+        .user-section .input-row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .user-section .input-row .input-group {
+          margin-bottom: 0;
+        }
+
+        /* Countdown más espacioso */
+        .countdown {
+          gap: 25px;
+        }
+
+        .countdown-item {
+          min-width: 100px;
+          padding: 20px 25px;
+        }
+
+        .countdown-number {
+          font-size: 2.2rem;
+        }
+
+        /* Legend más espaciosa */
+        .legend {
+          padding: 20px 40px;
+          gap: 40px;
+        }
+
+        .legend-item {
+          font-size: 0.95rem;
+        }
+
+        /* Progress bar */
+        .progress-container {
+          padding: 20px 40px;
+        }
+
+        /* Teams layout más grande */
+        .team-logo {
+          width: 50px;
+          height: 50px;
+          font-size: 1.8rem;
+        }
+
+        .team-name {
+          font-size: 1.05rem;
+        }
+
+        .vs-badge {
+          padding: 10px 16px;
+          font-size: 0.85rem;
+        }
+
+        /* Botones de opciones más grandes */
+        .options label {
+          padding: 16px 12px;
+          font-size: 1rem;
+        }
+      }
+
+      /* Pantallas muy grandes (1440px+) */
+      @media (min-width: 1440px) {
+        .container {
+          max-width: 1400px;
+        }
+
+        .matches-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .user-section {
+          max-width: 900px;
+        }
+
+        .user-section .input-row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* ==================== ANIMACIONES ==================== */
+
+      /* Animación de entrada para las tarjetas */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        53%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-8px);
+        }
+        60% {
+          transform: translateY(-4px);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          box-shadow: 0 0 5px rgba(99, 102, 241, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+        }
+      }
+
+      /* Aplicar animaciones a elementos */
+      .match-card {
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
+      }
+
+      .match-card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .match-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .match-card:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .match-card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .match-card:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+      .match-card:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+      .match-card:nth-child(7) {
+        animation-delay: 0.35s;
+      }
+      .match-card:nth-child(8) {
+        animation-delay: 0.4s;
+      }
+      .match-card:nth-child(9) {
+        animation-delay: 0.45s;
+      }
+
+      .header-content {
+        animation: fadeInScale 0.6s ease forwards;
+      }
+
+      .countdown-item {
+        animation: fadeInUp 0.5s ease forwards;
+        opacity: 0;
+      }
+
+      .countdown-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .countdown-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .countdown-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .countdown-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .stats-bar {
+        animation: fadeInUp 0.5s ease 0.2s forwards;
+        opacity: 0;
+      }
+
+      .prize-banner {
+        animation: fadeInScale 0.6s ease 0.3s forwards;
+        opacity: 0;
+      }
+
+      .prize-banner:hover {
+        animation: pulse 1s ease infinite;
+      }
+
+      .legend {
+        animation: fadeInUp 0.5s ease 0.1s forwards;
+        opacity: 0;
+      }
+
+      .user-section {
+        animation: fadeInUp 0.6s ease 0.2s forwards;
+        opacity: 0;
+      }
+
+      /* Animación hover mejorada para botones de opciones */
+      .options label {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .options label:hover {
+        transform: translateY(-3px);
+      }
+
+      .options label:active {
+        transform: translateY(-1px);
+      }
+
+      /* Efecto ripple para selección */
+      input[type='radio']:checked + label {
+        animation: glow 2s ease infinite;
+      }
+
+      /* Submit button animations */
+      .submit-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .submit-btn:hover::before {
+        left: 100%;
+      }
+
+      .submit-btn:hover:not(:disabled) {
+        transform: translateY(-3px) scale(1.02);
+      }
+
+      /* Team logo hover effect */
+      .team-logo {
+        transition: all 0.3s ease;
+      }
+
+      .match-card:hover .team-logo {
+        transform: scale(1.1);
+      }
+
+      /* Progress bar animated fill */
+      .progress-fill {
+        background: linear-gradient(
+          90deg,
+          var(--success),
+          var(--primary),
+          var(--success)
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2s linear infinite;
+      }
+
+      /* Match number pulse on hover */
+      .match-card:hover .match-number {
+        animation: bounce 0.6s ease;
+      }
+
+      /* Input focus animation */
+      .input-group input {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .input-group input:focus {
+        transform: translateY(-2px);
+      }
+
+      /* Floating animation for logo */
+      .logo {
+        animation: bounce 2s ease infinite;
+      }
+
       /* Leyenda de colores */
       .legend {
         display: flex;
@@ -437,6 +838,12 @@
 
       .input-group {
         margin-bottom: 15px;
+      }
+
+      /* Input row para agrupar campos */
+      .input-row {
+        display: flex;
+        flex-direction: column;
       }
 
       .input-group label {
@@ -3628,295 +4035,302 @@
       </div>
 
       <form id="quinielaForm">
-        <!-- Partido 1 -->
-        <div class="match-card" data-match="1">
-          <div class="match-header">
-            <div class="match-number">1</div>
-            <div class="match-date">📅 Vie 10 Ene • 19:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🦅</div>
-              <span class="team-name">América</span>
+        <!-- Grid de partidos para PC -->
+        <div class="matches-grid">
+          <!-- Partido 1 -->
+          <div class="match-card" data-match="1">
+            <div class="match-header">
+              <div class="match-number">1</div>
+              <div class="match-date">📅 Vie 10 Ene • 19:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">🐐</div>
-              <span class="team-name">Chivas</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🦅</div>
+                <span class="team-name">América</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">🐐</div>
+                <span class="team-name">Chivas</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p1" id="p1L" value="L" required />
+              <label for="p1L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p1" id="p1E" value="E" />
+              <label for="p1E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p1" id="p1V" value="V" />
+              <label for="p1V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p1" id="p1L" value="L" required />
-            <label for="p1L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p1" id="p1E" value="E" />
-            <label for="p1E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p1" id="p1V" value="V" />
-            <label for="p1V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 2 -->
-        <div class="match-card" data-match="2">
-          <div class="match-header">
-            <div class="match-number">2</div>
-            <div class="match-date">📅 Vie 10 Ene • 21:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🚂</div>
-              <span class="team-name">Cruz Azul</span>
+          <!-- Partido 2 -->
+          <div class="match-card" data-match="2">
+            <div class="match-header">
+              <div class="match-number">2</div>
+              <div class="match-date">📅 Vie 10 Ene • 21:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">⚡</div>
-              <span class="team-name">Rayados</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🚂</div>
+                <span class="team-name">Cruz Azul</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">⚡</div>
+                <span class="team-name">Rayados</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p2" id="p2L" value="L" required />
+              <label for="p2L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p2" id="p2E" value="E" />
+              <label for="p2E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p2" id="p2V" value="V" />
+              <label for="p2V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p2" id="p2L" value="L" required />
-            <label for="p2L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p2" id="p2E" value="E" />
-            <label for="p2E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p2" id="p2V" value="V" />
-            <label for="p2V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 3 -->
-        <div class="match-card" data-match="3">
-          <div class="match-header">
-            <div class="match-number">3</div>
-            <div class="match-date">📅 Sáb 11 Ene • 17:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🦁</div>
-              <span class="team-name">León</span>
+          <!-- Partido 3 -->
+          <div class="match-card" data-match="3">
+            <div class="match-header">
+              <div class="match-number">3</div>
+              <div class="match-date">📅 Sáb 11 Ene • 17:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">🐾</div>
-              <span class="team-name">Pumas</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🦁</div>
+                <span class="team-name">León</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">🐾</div>
+                <span class="team-name">Pumas</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p3" id="p3L" value="L" required />
+              <label for="p3L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p3" id="p3E" value="E" />
+              <label for="p3E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p3" id="p3V" value="V" />
+              <label for="p3V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p3" id="p3L" value="L" required />
-            <label for="p3L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p3" id="p3E" value="E" />
-            <label for="p3E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p3" id="p3V" value="V" />
-            <label for="p3V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 4 -->
-        <div class="match-card" data-match="4">
-          <div class="match-header">
-            <div class="match-number">4</div>
-            <div class="match-date">📅 Sáb 11 Ene • 19:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🐯</div>
-              <span class="team-name">Tigres</span>
+          <!-- Partido 4 -->
+          <div class="match-card" data-match="4">
+            <div class="match-header">
+              <div class="match-number">4</div>
+              <div class="match-date">📅 Sáb 11 Ene • 19:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">😈</div>
-              <span class="team-name">Toluca</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🐯</div>
+                <span class="team-name">Tigres</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">😈</div>
+                <span class="team-name">Toluca</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p4" id="p4L" value="L" required />
+              <label for="p4L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p4" id="p4E" value="E" />
+              <label for="p4E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p4" id="p4V" value="V" />
+              <label for="p4V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p4" id="p4L" value="L" required />
-            <label for="p4L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p4" id="p4E" value="E" />
-            <label for="p4E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p4" id="p4V" value="V" />
-            <label for="p4V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 5 -->
-        <div class="match-card" data-match="5">
-          <div class="match-header">
-            <div class="match-number">5</div>
-            <div class="match-date">📅 Sáb 11 Ene • 21:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🔵</div>
-              <span class="team-name">Pachuca</span>
+          <!-- Partido 5 -->
+          <div class="match-card" data-match="5">
+            <div class="match-header">
+              <div class="match-number">5</div>
+              <div class="match-date">📅 Sáb 11 Ene • 21:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">🟢</div>
-              <span class="team-name">Santos</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🔵</div>
+                <span class="team-name">Pachuca</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">🟢</div>
+                <span class="team-name">Santos</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p5" id="p5L" value="L" required />
+              <label for="p5L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p5" id="p5E" value="E" />
+              <label for="p5E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p5" id="p5V" value="V" />
+              <label for="p5V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p5" id="p5L" value="L" required />
-            <label for="p5L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p5" id="p5E" value="E" />
-            <label for="p5E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p5" id="p5V" value="V" />
-            <label for="p5V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 6 -->
-        <div class="match-card" data-match="6">
-          <div class="match-header">
-            <div class="match-number">6</div>
-            <div class="match-date">📅 Dom 12 Ene • 12:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🦈</div>
-              <span class="team-name">Querétaro</span>
+          <!-- Partido 6 -->
+          <div class="match-card" data-match="6">
+            <div class="match-header">
+              <div class="match-number">6</div>
+              <div class="match-date">📅 Dom 12 Ene • 12:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">⚓</div>
-              <span class="team-name">Mazatlán</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🦈</div>
+                <span class="team-name">Querétaro</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">⚓</div>
+                <span class="team-name">Mazatlán</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p6" id="p6L" value="L" required />
+              <label for="p6L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p6" id="p6E" value="E" />
+              <label for="p6E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p6" id="p6V" value="V" />
+              <label for="p6V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p6" id="p6L" value="L" required />
-            <label for="p6L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p6" id="p6E" value="E" />
-            <label for="p6E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p6" id="p6V" value="V" />
-            <label for="p6V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 7 -->
-        <div class="match-card" data-match="7">
-          <div class="match-header">
-            <div class="match-number">7</div>
-            <div class="match-date">📅 Dom 12 Ene • 17:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🔴</div>
-              <span class="team-name">Atlas</span>
+          <!-- Partido 7 -->
+          <div class="match-card" data-match="7">
+            <div class="match-header">
+              <div class="match-number">7</div>
+              <div class="match-date">📅 Dom 12 Ene • 17:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">🟡</div>
-              <span class="team-name">Necaxa</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🔴</div>
+                <span class="team-name">Atlas</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">🟡</div>
+                <span class="team-name">Necaxa</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p7" id="p7L" value="L" required />
+              <label for="p7L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p7" id="p7E" value="E" />
+              <label for="p7E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p7" id="p7V" value="V" />
+              <label for="p7V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p7" id="p7L" value="L" required />
-            <label for="p7L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p7" id="p7E" value="E" />
-            <label for="p7E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p7" id="p7V" value="V" />
-            <label for="p7V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 8 -->
-        <div class="match-card" data-match="8">
-          <div class="match-header">
-            <div class="match-number">8</div>
-            <div class="match-date">📅 Dom 12 Ene • 19:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🦂</div>
-              <span class="team-name">Juárez</span>
+          <!-- Partido 8 -->
+          <div class="match-card" data-match="8">
+            <div class="match-header">
+              <div class="match-number">8</div>
+              <div class="match-date">📅 Dom 12 Ene • 19:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">🌵</div>
-              <span class="team-name">San Luis</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🦂</div>
+                <span class="team-name">Juárez</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">🌵</div>
+                <span class="team-name">San Luis</span>
+              </div>
+            </div>
+            <div class="options">
+              <input type="radio" name="p8" id="p8L" value="L" required />
+              <label for="p8L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p8" id="p8E" value="E" />
+              <label for="p8E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p8" id="p8V" value="V" />
+              <label for="p8V">V<span class="label-text">Visita</span></label>
             </div>
           </div>
-          <div class="options">
-            <input type="radio" name="p8" id="p8L" value="L" required />
-            <label for="p8L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p8" id="p8E" value="E" />
-            <label for="p8E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p8" id="p8V" value="V" />
-            <label for="p8V">V<span class="label-text">Visita</span></label>
-          </div>
-        </div>
 
-        <!-- Partido 9 -->
-        <div class="match-card" data-match="9">
-          <div class="match-header">
-            <div class="match-number">9</div>
-            <div class="match-date">📅 Dom 12 Ene • 21:00</div>
-          </div>
-          <div class="teams">
-            <div class="team home">
-              <div class="team-logo">🏛️</div>
-              <span class="team-name">Puebla</span>
+          <!-- Partido 9 -->
+          <div class="match-card" data-match="9">
+            <div class="match-header">
+              <div class="match-number">9</div>
+              <div class="match-date">📅 Dom 12 Ene • 21:00</div>
             </div>
-            <div class="vs-badge">VS</div>
-            <div class="team away">
-              <div class="team-logo">🐴</div>
-              <span class="team-name">Tijuana</span>
+            <div class="teams">
+              <div class="team home">
+                <div class="team-logo">🏛️</div>
+                <span class="team-name">Puebla</span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team away">
+                <div class="team-logo">🐴</div>
+                <span class="team-name">Tijuana</span>
+              </div>
             </div>
-          </div>
-          <div class="options">
-            <input type="radio" name="p9" id="p9L" value="L" required />
-            <label for="p9L">L<span class="label-text">Local</span></label>
-            <input type="radio" name="p9" id="p9E" value="E" />
-            <label for="p9E">E<span class="label-text">Empate</span></label>
-            <input type="radio" name="p9" id="p9V" value="V" />
-            <label for="p9V">V<span class="label-text">Visita</span></label>
+            <div class="options">
+              <input type="radio" name="p9" id="p9L" value="L" required />
+              <label for="p9L">L<span class="label-text">Local</span></label>
+              <input type="radio" name="p9" id="p9E" value="E" />
+              <label for="p9E">E<span class="label-text">Empate</span></label>
+              <input type="radio" name="p9" id="p9V" value="V" />
+              <label for="p9V">V<span class="label-text">Visita</span></label>
+            </div>
           </div>
         </div>
+        <!-- Fin matches-grid -->
 
         <!-- Datos del usuario -->
         <div class="user-section">
           <h3>👤 Tus Datos</h3>
-          <div class="input-group">
-            <label for="nombre">Nombre completo</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              placeholder="Ej: Juan Pérez García"
-              required
-              autocomplete="name"
-              maxlength="50"
-              oninput="updateCharCounter(this, 50)"
-            />
-            <div class="char-counter" id="nombreCounter">0/50</div>
-            <div class="validation-message" id="nombreValidation"></div>
+          <div class="input-row">
+            <div class="input-group">
+              <label for="nombre">Nombre completo</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Ej: Juan Pérez García"
+                required
+                autocomplete="name"
+                maxlength="50"
+                oninput="updateCharCounter(this, 50)"
+              />
+              <div class="char-counter" id="nombreCounter">0/50</div>
+              <div class="validation-message" id="nombreValidation"></div>
+            </div>
+            <div class="input-group">
+              <label for="email">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Ej: tucorreo@email.com"
+                required
+                autocomplete="email"
+                oninput="validateEmail(this)"
+              />
+              <div class="validation-message" id="emailValidation"></div>
+            </div>
+            <div class="input-group">
+              <label for="telefono">WhatsApp / Teléfono</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="Ej: 55 1234 5678"
+                required
+                autocomplete="tel"
+                maxlength="15"
+                oninput="updateCharCounter(this, 15); formatPhone(this)"
+              />
+              <div class="char-counter" id="telefonoCounter">0/15</div>
+              <div class="validation-message" id="telefonoValidation"></div>
+            </div>
           </div>
-          <div class="input-group">
-            <label for="email">Correo electrónico</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Ej: tucorreo@email.com"
-              required
-              autocomplete="email"
-              oninput="validateEmail(this)"
-            />
-            <div class="validation-message" id="emailValidation"></div>
-          </div>
-          <div class="input-group">
-            <label for="telefono">WhatsApp / Teléfono</label>
-            <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              placeholder="Ej: 55 1234 5678"
-              required
-              autocomplete="tel"
-              maxlength="15"
-              oninput="updateCharCounter(this, 15); formatPhone(this)"
-            />
-            <div class="char-counter" id="telefonoCounter">0/15</div>
-            <div class="validation-message" id="telefonoValidation"></div>
-          </div>
+          <!-- Fin input-row -->
           <div class="terms-group">
             <input type="checkbox" id="terms" required />
             <label for="terms"
